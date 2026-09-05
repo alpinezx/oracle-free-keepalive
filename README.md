@@ -7,8 +7,6 @@ running short CPU bursts on a schedule, so it doesn't get reclaimed for
 sitting idle. Runs natively on the VM (not Docker), and survives reboots,
 including a daily scheduled reboot.
 
-Repo: https://github.com/alpinezx/oracle-free-keepalive
-
 ---
 
 ## Why this exists
