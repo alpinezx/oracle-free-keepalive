@@ -1,9 +1,13 @@
 # Oracle Always Free Keepalive: Setup & Reference Guide
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/alpinezx/oracle-free-keepalive/blob/main/LICENSE)
+
 A systemd-backed script that keeps an Oracle Always Free instance active by
 running short CPU bursts on a schedule, so it doesn't get reclaimed for
 sitting idle. Runs natively on the VM (not Docker), and survives reboots,
 including a daily scheduled reboot.
+
+Repo: https://github.com/alpinezx/oracle-free-keepalive
 
 ---
 
@@ -34,11 +38,9 @@ Files it creates on the VM:
 
 ## First-time setup
 
-Clone the repo directly onto the instance:
-
 ```bash
-git clone https://github.com/alpinezx/oracle-free-keepalive.git
-cd oracle-free-keepalive
+mkdir -p ~/keepalive && cd ~/keepalive
+curl -O https://raw.githubusercontent.com/alpinezx/oracle-free-keepalive/main/keepalive.sh
 chmod +x keepalive.sh
 sudo bash keepalive.sh
 ```
@@ -55,12 +57,11 @@ That's it. No further setup needed.
 
 ### Updating later
 
-If the script gets updated in the repo, pull the latest version and
-reinstall:
+If the script gets updated in the repo, re-download it and reinstall:
 
 ```bash
-cd oracle-free-keepalive
-git pull
+cd ~/keepalive
+curl -O https://raw.githubusercontent.com/alpinezx/oracle-free-keepalive/main/keepalive.sh
 sudo bash keepalive.sh install
 ```
 
