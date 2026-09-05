@@ -147,6 +147,17 @@ uninstall() {
     rm -rf "$INSTALL_DIR"
     systemctl daemon-reload
     echo "Fully removed."
+
+    if command -v stress-ng >/dev/null 2>&1; then
+        echo
+        read -rp "Also remove stress-ng? It won't be used by anything else unless you know otherwise. [y/N]: " reply
+        if [[ "$reply" =~ ^[Yy]$ ]]; then
+            apt remove -y stress-ng
+            echo "stress-ng removed."
+        else
+            echo "Leaving stress-ng installed."
+        fi
+    fi
 }
 
 quick_status() {
